@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"; lang="en">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <title>Yvan's Reviews Section</title>
+
+</head>
+
+
+
+<body style="background-color: beige; text-align: center">
+
+<!--Search for reviews of a certain item.-->
+<fieldset>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Search for a Review</legend>
+    <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="search_review.php">
+        <p>
+            <h3>Search for reviews of a certain item!</h3>
+            <label for="SEARCH_ITEM_ID">Item ID: </label>
+            <input type="int" name="search_item_id" id="search_item_id">
+        </p>
+
+        <div></div>
+
+        <p>
+            <input style="color: red; font-family: fantasy; font-size: 16px" type="submit" name="Submit" value="Submit">
+        </p>
+    </form>
+
+
+</fieldset>
+
+<!--Write a review for an item.-->
+<fieldset>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Write a Review</legend>
+    <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="write_review.php">
+        <p>
+            <h3>Write a review for a certain item!</h3>
+            <label for="WRITE_ITEM_ID">Item ID: </label>
+            <input type="int" name="write_item_id" id="write_item_id">
+            <div></div>
+            <label type="WRITE_ACCOUNT_ID">Account ID: </label>
+            <input type="int" name="write_account_id" id="write_account_id">
+            <div></div>
+            <label type="WRITE_REVIEW" maxlength="280" size="70">Write your review: </label>
+            <input type="text" name="write_review" id="write_review">
+            <div></div>
+            <input style="color: red; font-family: fantasy; font-size: 16px" type="submit" name="Submit" value="Submit">
+        </p>
+    </form>
+</fieldset>
+
+<!--Edit a review of your choice-->
+<fieldset>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Edit a Review</legend>
+    <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="edit_review.php">
+        <p>
+            <h3>Edit your reviews!</h3>
+            <label for="EDIT_REVIEW_ID">Review ID: </label>
+            <input type="int" name="edit_review_id" id="edit_review_id">
+            <div></div>
+            <label type="EDIT_REVIEW">Revised Review: </label>
+            <input type="text" name="edit_review" id="edit_review">
+            <div></div>
+            <input style="color: red; font-family: fantasy; font-size: 16px" type="submit" name="Submit" value="Submit">
+        </p>
+    </form>
+</fieldset>
+
+</body>
+
+
+</html>
