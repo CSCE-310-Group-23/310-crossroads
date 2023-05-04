@@ -5,4 +5,4 @@ I. Setting up **frontend** <br>
   1. Copy "frontend_crossroads" folder into C:\xampp\htdocs
 
 II. Setting up **backend** <br>
-  2. Copy "backend_crossroads" folder into C:\xampp\mysql\data\crossroads
+  1. Copy "backend_crossroads" folder into C:\xampp\mysql\data\crossroads
