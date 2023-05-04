@@ -1,14 +1,14 @@
 <?php
+
 $con = mysqli_connect('localhost', 'root', '', 'crossroadsgroup23');
 
-$edit_review_id = $_POST['edit_review_id'];
-$edit_review = $_POST['edit_review'];
-$sql = "UPDATE reviews SET review_text = '$edit_review' WHERE review_ID = $edit_review_id";
+$remove_review_id = $_POST['remove_review_id'];
+$sql = "UPDATE reviews SET review_text = 'This review has been deleted by the user.' WHERE review_ID = '$remove_review_id'";
 mysqli_query($con, $sql);
 
 
 echo "<form action='reviews.html' method='post'>";
-echo "<input type='hidden' name='edit_review_id' value='$edit_review_id'>";
+echo "<input type='hidden' name='remove_review_id' value='$remove_review_id'>";
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
@@ -20,9 +20,9 @@ echo "<table border='1'>
         <th>item_id</th>
 ";
 
-$result = mysqli_query($con,"SELECT * FROM reviews WHERE review_ID = $edit_review_id");
+$result = mysqli_query($con, "SELECT * FROM reviews WHERE review_ID = $remove_review_id");
 
-while($row = mysqli_fetch_array($result)) {
+while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td>" . $row['review_ID'] . "</td>";
     echo "<td>" . $row['review_text'] . "</td>";
@@ -34,4 +34,3 @@ echo "</table>";
 
 mysqli_close($con);
 
-?>
