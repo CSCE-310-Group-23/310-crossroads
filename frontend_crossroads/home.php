@@ -36,45 +36,14 @@
   <head>
       <meta charset="UTF-8">
       <link rel="icon" type="image/x-icon? href="images/csce310-crossroads-o1-1.svg">
-		  <title>Crossroads - Home</title>
+		  <title>CR - Home</title>
       <!-- CSS FOR STYLING THE PAGE -->
-      <style>
-          table {
-              margin: 0 auto;
-              font-size: large;
-              border: 1px solid black;
-          }
-  
-          h1 {
-              text-align: center;
-              color: #006600;
-              font-size: xx-large;
-              font-family: 'Gill Sans', 'Gill Sans MT',
-              ' Calibri', 'Trebuchet MS', 'sans-serif';
-          }
-  
-          td {
-              background-color: #E4F5D4;
-              border: 1px solid black;
-          }
-  
-          th,
-          td {
-              font-weight: bold;
-              border: 1px solid black;
-              padding: 10px;
-              text-align: center;
-          }
-  
-          td {
-              font-weight: lighter;
-          }
-      </style>
+      <link rel="stylesheet" href="style.css">
   </head>
   <body>
       <?php require_once(__DIR__.'/navbar.html'); ?>
       <section>
-          <h1>Test - Account</h1>
+          <h1>Test - [Display Account Data]</h1>
           <!-- TABLE CONSTRUCTION -->
           <table>
               <tr>
