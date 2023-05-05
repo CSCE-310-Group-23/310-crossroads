@@ -1,9 +1,6 @@
 # Setting up the database
 *Added by Ryan Kafka, please contact if more information is necessary.*
 
-We need to make all the code compatible with this common database. <br>
-If there are any changes need to the scema or data, we have to coordinate with each other to make the change and reexport a new master database script.
-
 I have used the database export feature to create a script that can be used to create the crossroads database. <br>
 The script is within this directory under the name "crossroads.sql" <br>
 <ol>
@@ -23,5 +20,8 @@ The script is within this directory under the name "crossroads.sql" <br>
     </ol>
   </li>
 </ol>
-You should now have the common copy of the crossroads database in your system.
+
+You should now have the common copy of the crossroads database in your system. <br>
+We need to make all the code compatible with this common database. <br>
+If there are any changes need to the scema or data, we have to coordinate with each other to make the change and reexport a new master database script.
 
