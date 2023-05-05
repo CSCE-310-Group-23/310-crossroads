@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'crossroadsgroup23');
+$con = mysqli_connect('localhost', 'root', '', 'crossroads');
 
 $search_item_id = $_POST['search_item_id'];
 

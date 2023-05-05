@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'crossroadsgroup23');
+$con = mysqli_connect('localhost', 'root', '', 'crossroads');
 
 $write_item_id = $_POST['write_item_id'];
 $write_account_id = $_POST['write_account_id'];

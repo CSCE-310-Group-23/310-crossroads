@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'crossroadsgroup23');
+$con = mysqli_connect('localhost', 'root', '', 'crossroads');
 
 $edit_review_id = $_POST['edit_review_id'];
 $edit_review = $_POST['edit_review'];

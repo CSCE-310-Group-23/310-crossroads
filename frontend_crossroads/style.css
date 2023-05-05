@@ -1,5 +1,5 @@
 :root {
-	--emeraldgreen: #F060D6;
+	--emeraldgreen: #028A0f;
 }
 
 /* navbar styling */
@@ -26,8 +26,12 @@ nav a {
 	text-decoration: none;
 	margin: 0 10px;
 	-ms-transform: translateY(35%);
-	transform: translateY(35%);
+	transform: translateY(35%);	
 }
+
+/* nav a:hover {
+	background-color: var(--emeraldgreen);
+} */
 
 /* basics (table + header) styling */ 
 
@@ -40,7 +44,7 @@ table {
 h1 {
 	text-align: center;
 	font-family: Verdana, Geneva, sans-serif;
-	color: #028A0f;
+	color: var(--emeraldgreen);
 	font-size: xx-large;
 }
 
@@ -64,5 +68,9 @@ td {
 footer {
 	bottom: 0%;
 	top: 90%;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+form {
 	font-family: Verdana, Geneva, sans-serif;
 }

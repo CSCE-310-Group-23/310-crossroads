@@ -1,5 +1,7 @@
 <?php
 $con=mysqli_connect('localhost', 'root', '','crossroads');
+// Include Navbar
+require_once('../../navbar.html');
 // Check connection
 if (mysqli_connect_errno())
 {
@@ -18,12 +20,19 @@ echo "<table border='1'>
 
 while($row = mysqli_fetch_array($result))
 {
-	echo "<tr>";
-	echo "<td>" . $row['item_id'] . "</td>";
-	echo "<td>" . $row['item_price'] . "</td>";
-	echo "<td>" . $row['item_quantity'] . "</td>";
-	echo "<td>" . $row['list_price'] . "</td>";
-	echo "</tr>";
+	/*added by ryan
+	$itemprice = mysqli_query($con,"SELECT item_price FROM item_list WHERE item_id=$row['item_id']");
+	if($itemprice) {
+		// RECOMMEND USING A JOIN TO ACCOMPLISH THIS
+	/* end of ryan */
+		echo "<tr>";
+		// where is order_id?? - rjk
+		echo "<td>" . $row['item_id'] . "</td>";
+		echo "<td>" . /*$itemprice*/$row['list_price'] . "</td>";	// tweaked by ryan
+		echo "<td>" . $row['item_quantity'] . "</td>";
+		echo "<td>" . $row['list_price'] . "</td>";
+		echo "</tr>";
+	//}
 }
 echo "</table>";
 

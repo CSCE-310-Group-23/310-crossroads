@@ -1,3 +1,43 @@
+<?php
+	session_start();
+	//Connect to DB
+	$connection = mysqli_connect("localhost", "root", "", "crossroads");
+
+	// Check if the connection was successful
+	if (!$connection) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+	//Query Account details
+	$query = "SELECT account_fname, account_lname, account_email FROM account";
+	$result = mysqli_query($connection, $query);
+	if (isset($_POST['chg_fname'])) {
+	$account_fname = mysqli_real_escape_string($connection, $_POST['account_fname']);
+	$query = "UPDATE account SET account_fname='$account_fname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+	$result = mysqli_query($connection, $query);
+	}
+	if (isset($_POST['chg_lname'])) {
+	$account_lname = mysqli_real_escape_string($connection, $_POST['account_lname']);
+	$query = "UPDATE account SET account_lname='$account_lname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+	$result = mysqli_query($connection, $query);
+	}
+
+	if (isset($_POST['chg_email'])) {
+	$account_email = mysqli_real_escape_string($connection, $_POST['account_email']);
+	$query = "UPDATE account SET account_email='$account_fname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+	$result = mysqli_query($connection, $query);
+	}
+
+	if (isset($_POST['chg_password'])) {
+	$account_password = mysqli_real_escape_string($connection, $_POST['account_password']);
+	$query = "UPDATE account SET account_password='$account_fname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+	$result = mysqli_query($connection, $query);
+	}
+
+
+	mysqli_close($connection);
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,42 +52,31 @@
 	<body>
 		<section>
 			<!-- ? -->
-			<h1>REPLACE THIS - Account Page</h1>
-			<!-- TABLE CONSTRUCTION -->
-			<?php
-				include 'connect.php';
-				// Query Account Data from Database
-				$sql = " SELECT * FROM account ORDER BY account_id DESC ";
-				$result = $mysqli->query($sql);
-				$mysqli->close(); 
-			?>
-			<table>
-				<tr>
-					<th>AccountID</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>Account Type</th>
-				</tr>
-				<!-- PHP CODE TO FETCH DATA FROM ROWS -->
-				<?php
-					// LOOP TILL END OF DATA
-					while($rows=$result->fetch_assoc())
-					{
-				?>
-				<tr>
-					<!-- FETCHING DATA FROM EACH
-						ROW OF EVERY COLUMN -->
-					<td><?php echo $rows['account_id'];?></td>
-					<td><?php echo $rows['account_fname'];?></td>
-					<td><?php echo $rows['account_lname'];?></td>
-					<td><?php echo $rows['account_email'];?></td>
-					<td><?php echo $rows['account_type'];?></td>
-				</tr>
-				<?php
-					}
-				?>
-			</table>
+			<h1>My Account</h1>
+
+			<!-- Include Alex' Account Page -->
+			<form method="post" action="accounts/register.php">
+				<div class="input-group">
+					<label>First Name</label>
+					<input type="text" name="account_fname" value="">
+					<button type="submit" class="btn" name="chg_fname">Change</button>
+				</div>
+				<div class="input-group">
+					<label>Last Name</label>
+					<input type="text" name="account_lname">
+					<button type="submit" class="btn" name="chg_lname">Change</button>
+				</div>
+				<div class="input-group">
+					<label>Email</label>
+					<input type="email" name="account_email">
+					<button type="submit" class="btn" name="chg_email">Change</button>
+				</div>
+				<div class="input-group">
+					<label>Password</label>
+					<input type="password" name="password">
+					<button type="submit" class="btn" name="chg_password">Change</button>
+				</div>
+			</form>
 		</section>
 	</body>
 </html>

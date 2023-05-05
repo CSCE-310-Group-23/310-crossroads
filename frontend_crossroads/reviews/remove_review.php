@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root', '', 'crossroadsgroup23');
+$con = mysqli_connect('localhost', 'root', '', 'crossroads');
 
 $remove_review_id = $_POST['remove_review_id'];
 $sql = "UPDATE reviews SET review_text = 'This review has been deleted by the user.' WHERE review_ID = '$remove_review_id'";
