@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 01:34 PM
+-- Generation Time: May 05, 2023 at 01:37 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -244,6 +244,16 @@ ALTER TABLE `reviews`
   ADD KEY `FK_ReviewBuyer` (`account_id_buyer`),
   ADD KEY `FK_ReviewSeller` (`account_id_seller`),
   ADD KEY `FK_ReviewItem` (`item_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
