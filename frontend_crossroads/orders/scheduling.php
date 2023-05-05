@@ -1,7 +1,7 @@
 <!-- PHP code to query account data -->
 <?php 
 	// connect
-	$con = mysqli_connect('localhost', 'root', '', 'crossroads');
+	$conn = mysqli_connect('localhost', 'root', '', 'crossroads');
 
 	// handle session
 	session_start();
@@ -25,10 +25,10 @@
 		<section>
 			<h1>Add Orders</h1>
 			<form action="http://localhost/crossroads/orders/functions/add_order.php" method="POST">
-				<label for="orderID">Order ID:</label>
-				<input type="number" name="orderID">
-				<label for="buyerID">Buyer's Account ID:</label>
-				<input type="number" name="buyerID">
+				<!-- Only show for admin, regular user's can only affect their own related orders -->
+				<label for="buyerID" <?php if(!$_SESSION['is_admin']) {echo " style='display: none'";}?>>Buyer's Account ID:</label>
+				<input type="number" name="buyerID" <?php if(!$_SESSION['is_admin']) {echo " style='display: none'";}?>>
+				<!-- -->
 				<label for="deliveryDate">Delivery Date:</label>
 				<input type="date" name="deliveryDate" value="2023-05-30" min="2018-05-05">
 				<label for="addressID">Address ID:</label>
