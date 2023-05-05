@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>inserting PHP code into html</title>
     <title>Catherine</title>
     <link rel="stylesheet" href="../../home_style.css">
 </head>
