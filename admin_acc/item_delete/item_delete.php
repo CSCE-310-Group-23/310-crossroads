@@ -13,6 +13,12 @@ $sql = "DELETE FROM item WHERE item_id=$txtItem";
 // insert in database 
 $rs = mysqli_query($con, $sql);
 
+echo "<form action='item_delete.html' method='post'>";
+echo "<input type='hidden' name='edit_review_id' value='$txtItem'>";
+echo "<input type='submit' value='Return'>";
+echo "</form>";
+
+
 if($rs)
 {
 	echo "Item Deleted Succesfully!";

@@ -1,7 +1,7 @@
 <!-- PHP code to query account data -->
 <?php 
 	// connect
-	$conn = mysqli_connect('localhost', 'root', '', 'crossroads');
+	$conn = mysqli_connect('localhost', 'root', '', 'CS_310_final_project');
 
 	// handle session
 	session_start();
