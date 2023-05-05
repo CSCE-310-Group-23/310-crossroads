@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> Contact Form - PHP/MySQL Demo Code</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title> Contact Form - PHP/MySQL Demo Code</title>
+    <link rel="stylesheet" href="../../home_style.css">
 </head>
 
 <body style="background-color:rgb(253, 234, 237);text-align:center">
-<fieldset> 
-<legend style="color:darkseagreen;font-family:monospace;font-size:15px;"> &#9753; &#9753; &#9753; Item List Search Information &#9753; &#9753; &#9753;</legend>
-<form style="color:darkseagreen;font-family:monospace;font-size:15px;" name="frmContact" method="post" action="item_connect.php">
 
-<p> &#9996; &#9996; &#9996; Insert the order ID below! &#9996; &#9996; &#9996;</p>    
-<p>
-<label for="Order id">Order ID </label>
-<input style="font-family:monospace;font-size:15px;" type="text" name="txtOrder" id="txtOrder">
-</p>    
+    <nav class="nav-bar">
+        <a href="../../home.html">Go Home</a>
+        <a href="item_search.html">Search for Items</a>
+        <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="../../admin_acc/item_list_insertion/item_list.html">Insert an Item</a>
+        <a href="">Manage Account</a>
+        <a href="../../reviews/reviews.html">Reviews</a>
+    </nav>
 
-<p>&nbsp;</p>
-<p>
-<input style="color:darkseagreen;font-family:monospace;font-size:15px;" type="submit" name="Submit" id="Submit" value="Submit">
+    <fieldset>
+    <legend style="color:darkseagreen;font-family:monospace;font-size:15px;"> &#9753; &#9753; &#9753; Item List Search Information &#9753; &#9753; &#9753;</legend>
+    <form style="color:darkseagreen;font-family:monospace;font-size:15px;" name="frmContact" method="post" action="item_connect.php">
 
-<p>&hearts; &hearts; &hearts; &hearts; This is CATHERINE's page if you can not tell already (ur welcome for the cuteness) &hearts; &hearts; &hearts; &hearts;</p>
-</p>
-</form>
-</fieldset>
+    <p> &#9996; &#9996; &#9996; Insert the order ID below! &#9996; &#9996; &#9996;</p>
+    <p>
+    <label for="Order id">Order ID </label>
+    <input style="font-family:monospace;font-size:15px;" type="text" name="txtOrder" id="txtOrder">
+    </p>
+
+    <p>&nbsp;</p>
+    <p>
+    <input style="color:darkseagreen;font-family:monospace;font-size:15px;" type="submit" name="Submit" id="Submit" value="Submit">
+
+    <p>&hearts; &hearts; &hearts; &hearts; This is CATHERINE's page if you can not tell already (ur welcome for the cuteness) &hearts; &hearts; &hearts; &hearts;</p>
+    </p>
+    </form>
+    </fieldset>
 </body>
 </html>
