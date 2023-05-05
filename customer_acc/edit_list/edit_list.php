@@ -24,8 +24,8 @@ $txtlistprice = (int)$txtItemPrice * (int)$txtItemQuantity;
 //$txtItemPrice= $_POST['txtItemPrice'];
 
 // database insert SQL code
-
-$sql = "INSERT INTO item_list (order_id, item_id, item_quantity, list_price) VALUES ('$txtOrder', '$txtItem', '$txtItemQuantity','$txtlistprice')";
+$sql = "UPDATE item_list SET item_id = '$txtItem', item_quantity='$txtItemQuantity', list_price = '$txtlistprice'
+        WHERE order_id = '$txtItem'";
 $rs = mysqli_query($con,$sql);
 
 $result = mysqli_query($con,"SELECT * FROM item_list");
