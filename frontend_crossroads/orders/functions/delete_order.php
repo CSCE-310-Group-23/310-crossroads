@@ -2,7 +2,7 @@
 	// connect
 	$user = 'root';
 	$password = '';
-	$database = 'crossroads';
+	$database = 'CS_310_final_project';
 	$servername='localhost:3306';
 	$conn = new mysqli($servername, $user, $password, $database);
 	// Check connection
