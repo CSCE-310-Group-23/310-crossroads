@@ -8,7 +8,7 @@ The script is within this directory under the name "crossroads.sql" <br>
   <li>Drop existing crossroads database : do one of the following
     <ul>
       <li>Load phpMyAdmin database page (http://localhost/phpmyadmin/index.php?route=/server/databases), select crossroads database, and click drop</li>
-      <li>select SQL Tab and enter SQL command  DROP DATABASE `crossroads` (or whatever your previous database was called)</li>
+      <li>select SQL Tab and enter SQL command "DROP DATABASE `crossroads`" (or whatever your previous database was called)</li>
     </ul>
   </li>
   <li>Import Database
