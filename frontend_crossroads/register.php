@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //Connect to DB
-$connection = mysqli_connect("localhost", "root", "", "crossroads");
+$connection = mysqli_connect("localhost", "root", "", "CS_310_final_project");
 
 // Check if the connection was successful
 if (!$connection) {

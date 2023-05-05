@@ -9,7 +9,7 @@ $con = mysqli_connect('localhost', 'root', '','CS_310_final_project');
 $txtItem = $_POST['txtItem'];
 
 // database insert SQL code
-$sql = "DELETE FROM item_3 WHERE item_id=$txtItem";
+$sql = "DELETE FROM item WHERE item_id=$txtItem";
 // insert in database 
 $rs = mysqli_query($con, $sql);
 
@@ -20,6 +20,6 @@ if($rs)
 	echo "Error";
 }
 
-$conn->close();
+mysqli_close($con);
 
 ?>

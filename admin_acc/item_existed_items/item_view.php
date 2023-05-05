@@ -6,9 +6,19 @@ if (mysqli_connect_errno())
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 $txtaccount = $_POST['txtaccount'];
-$result = mysqli_query($con,"SELECT * FROM item_3 WHERE account_ID = $txtaccount");
+$result = mysqli_query($con,"SELECT * FROM item WHERE account_ID = $txtaccount");
 $bg_color = '#ff0000';
-echo "<table border='1'>
+
+
+echo "<form action='item_view.html' method='post'>";
+echo "<input type='hidden' value='$txtaccount'>";
+echo "<input type='submit' value='Return'>";
+echo "</form>";
+
+
+
+
+echo "<table border='1' style='font-size: 24px'>
 <tr>
 <th>item_id</th>
 <th>item_title</th>
