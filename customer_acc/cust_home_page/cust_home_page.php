@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>inserting PHP code into html</title>
     <title>Catherine</title>
     <link rel="stylesheet" href="../../home_style.css">
 </head>
 <body>
+<nav class="nav-bar">
+    <a href="http://localhost/CSCE310/310-crossroads/customer_acc/cust_home_page/cust_home_page.php">Go Home</a>
+    <a href="http://localhost/CSCE310/310-crossroads/admin_acc/home_page/home_page_main.php">Go To Admin Page</a>
+    <a href="http://localhost/CSCE310/310-crossroads/customer_acc/cust_home_page/cust_home_page.php">Go To Customers' Selection</a>
+    <a href="">Manage Account</a>
+</nav>
+
 <h2>Hello, this is your customers' page for items</h2>
 <h2> Select Action:
 <form action = "http://localhost/CSCE310/310-crossroads/customer_acc/item_list_search/item_search.html">
@@ -17,12 +23,7 @@
     <button>
         Add List Order
     </button>
-</form>
-<form action = "http://localhost/CSCE310/310-crossroads/home.html">
-    <button>
-        Click here to get back to home
-    </button>
-</form>
+
 </h2>
 </body>
 </html>
