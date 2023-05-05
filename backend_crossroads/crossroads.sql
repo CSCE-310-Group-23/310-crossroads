@@ -133,6 +133,7 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_price`, `item_desc`, `account
 CREATE TABLE `item_list` (
   `order_id` int(12) NOT NULL,
   `item_id` int(12) NOT NULL,
+  `item_price` int(12) NOT NULL,
   `item_quantity` int(12) NOT NULL,
   `list_price` int(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -141,10 +142,11 @@ CREATE TABLE `item_list` (
 -- Dumping data for table `item_list`
 --
 
-INSERT INTO `item_list` (`order_id`, `item_id`, `item_quantity`, `list_price`) VALUES
-(2, 1, 6, 12),
-(3, 1, 2, 4),
-(4, 2, 2, 90);
+INSERT INTO `item_list` (`order_id`, `item_id`, `item_price`,`item_quantity`, `list_price`) VALUES
+(2, 1, 2, 6, 12),
+(3, 1, 2, 2, 4),
+(4, 2, 45, 2, 90),
+(5, 2, 45, 4, 180);
 
 -- --------------------------------------------------------
 
