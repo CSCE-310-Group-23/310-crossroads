@@ -29,6 +29,12 @@
         Edit Existing Order List
     </button>
 </form>
+</form>
+<form action = "http://localhost/CSCE310/310-crossroads/customer_acc/delete_list/delete_list.html">
+    <button>
+        Delete Existing Order List
+    </button>
+</form>
 </h2>
 </body>
 </html>
