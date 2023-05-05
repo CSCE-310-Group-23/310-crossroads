@@ -1,33 +1,10 @@
-<!--<?php
-  echo "\r\n Hello World!";
-  echo "<br>";
-  echo "lol";
-?>-->
-
-
-
-
-<!-- PHP code to establish connection with the localserver -->
-<?php
-  $user = 'root';
-  $password = '';
-  $database = 'crossroads';
-  $servername='localhost:3306';
-  $mysqli = new mysqli($servername, $user, $password, $database);
-  
-  // Check connection
-  if ($mysqli->connect_error) {
-      die('Connect Error (' .
-      $mysqli->connect_errno . ') '.
-      $mysqli->connect_error);
-  }
-?>
 <!-- PHP code to query account data -->
 <?php 
-  // Query Account Data from Database
-  $sql = " SELECT * FROM account ORDER BY account_id DESC ";
-  $result = $mysqli->query($sql);
-  $mysqli->close(); 
+    include 'connect.php';
+    // Query Account Data from Database
+    $sql = " SELECT * FROM account ORDER BY account_id DESC ";
+    $result = $mysqli->query($sql);
+    $mysqli->close(); 
 ?>
 
 <!-- HTML code to display data in tabular format -->

@@ -1,3 +1,7 @@
+:root {
+	--emeraldgreen: #F060D6;
+}
+
 /* navbar styling */
 body {
 	display: flex;
@@ -55,4 +59,10 @@ td {
 	font-weight: lighter;
 	background-color: #E4F5D4;
 	border: 1px solid black;
+}
+
+footer {
+	bottom: 0%;
+	top: 90%;
+	font-family: Verdana, Geneva, sans-serif;
 }

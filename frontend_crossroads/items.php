@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		
-		<!-- ? -->
-		<h1>REPLACE THIS - Items & Orders Page</h1>
-		
+		<!-- Include Navbar -->
+		<?php require_once(__DIR__.'../navbar.html'); ?>
+		<!-- Include Item Search Page -->
+		<?php require_once(__DIR__.'/customer_acc/item_list_search/item_search.html'); ?>
 	</body>
 </html>

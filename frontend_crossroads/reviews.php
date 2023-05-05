@@ -11,8 +11,9 @@
 	</head>
 	<body>
 		
-		<!-- ? -->
-		<h1>REPLACE THIS - Reviews Page</h1>
-
+		<section>
+			<!-- Include Yvan's Reviews Page -->
+			<?php require_once(__DIR__.'/reviews/reviews.html'); ?>
+		</section>
 	</body>
 </html>
