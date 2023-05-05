@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Contact Form - PHP/MySQL Demo Code</title>
+    <title>Catherine</title>
     <link rel="stylesheet" href="../../home_style.css">
 </head>
 
@@ -11,18 +11,15 @@
     <nav class="nav-bar">
         <a href="../../home.html">Go Home</a>
         <a href="../../customer_acc/item_list_search/item_search.html">Search for Items</a>
+        <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="item_list.html">Insert an Item</a>
+        <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="../item_edit_desc/item_desc.html">Edit Item Description</a>
         <a href="">Manage Account</a>
         <a href="../../reviews/reviews.html">Reviews</a>
     </nav>
 
     <fieldset>
     <legend>Item Edit</legend>
-    <form name="frmContact" method="post" action="item_desc.php">
-        <p>
-
-        <label for="Item id">Item ID </label>
-        <input type="text" name="txtItem" id="txtItem">
-        </p>
+    <form name="frmContact" method="post" action="item_list.php">
 
         <p>
         <label for="Item Title">Item New Title</label>
@@ -36,7 +33,12 @@
 
         <p>
         <label for="Item New Price">Item New Price</label>
-        <input type="text" name="txtItemPrice" id="txtItemPrice">
+        <input type="double" name="txtItemPrice" id="txtItemPrice">
+        </p>
+        <label for="Item Account">Your Account ID</label>
+        <input type="int" name="txtID" id="txtID">
+        <p>
+
         </p>
 
         <p>&nbsp;</p>

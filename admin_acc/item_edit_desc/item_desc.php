@@ -13,14 +13,21 @@ $txtItemDesc = $_POST['txtItemDesc'];
 $txtItemPrice= $_POST['txtItemPrice'];
 
 // database insert SQL code
-$sql = "UPDATE item_3 SET item_title = '$txtItemTitle', item_price = '$txtItemPrice', item_desc = '$txtItemDesc' WHERE item_id = '$txtItem'";
+$sql = "UPDATE item SET item_title = '$txtItemTitle', item_price = '$txtItemPrice', item_desc = '$txtItemDesc' WHERE item_id = '$txtItem'";
 
 echo $txtItem;
 $rs = mysqli_query($con,$sql);
 
 $result = mysqli_query($con,"SELECT * FROM item_3 WHERE item_id = '$txtItem'");
 $bg_color = '#ff0000';
-echo "<table border='1'>
+
+echo "<form action='item_desc.html' method='post'>";
+echo "<input type='hidden' name='edit_review_id' value='$txtItem'>";
+echo "<input type='submit' value='Return'>";
+echo "</form>";
+
+
+echo "<table border='1' style='font-size: 24px'>
 <tr>
 <th>item_id</th>
 <th>item_title</th>
