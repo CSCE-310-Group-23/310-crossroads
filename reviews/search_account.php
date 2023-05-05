@@ -10,6 +10,7 @@ echo "<input type='hidden' name='search_account_id' value='$search_account_id'>"
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
+// prints the table again
 echo "<table border='1'>
     <tr>
         <th>review_ID</th>

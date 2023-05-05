@@ -5,7 +5,11 @@
 
 	// handle session
 	session_start();
-	$_SESSION['is_admin'] = ($_SESSION['account_type']==0);
+if(isset($_SESSION['account_type'])) {
+	$_SESSION['is_admin'] = ($_SESSION['account_type'] == 0);
+} else {
+	$_SESSION['is_admin'] = false;
+}
 ?>
 
 <!DOCTYPE html>

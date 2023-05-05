@@ -17,6 +17,7 @@ echo "<input type='hidden' name='write_item_id' value='$write_item_id'>";
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
+// prints the table again
 echo "<table border='1' style='font-size: 24px'>
     <tr>
         <th>review_ID</th>

@@ -12,6 +12,7 @@ echo "<input type='hidden' name='remove_review_id' value='$remove_review_id'>";
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
+// prints the table again
 echo "<table border='1' style='font-size: 24px'>
     <tr>
         <th>review_ID</th>

@@ -12,6 +12,10 @@
       $conn->connect_error);
   }
 
+
+
+
+
   // session_start();
 
   $query = "SELECT * FROM orders
@@ -20,8 +24,11 @@
               AND address_label.address_id=orders.address_id
               LEFT JOIN account
                 ON account.account_id=orders.account_id";
-  if(!$_SESSION['is_admin']) {
-    echo "<h1>" . $_SESSION['account_fname'] . " " . $_SESSION['account_lname'] . "'s Orders";
+
+
+
+if(!$_SESSION['is_admin']) {
+    echo "<h1>" . ($_SESSION['account_fname']) . " " . $_SESSION['account_lname'] . "'s Orders";
     $query = $query . ' WHERE orders.account_id=' . $_SESSION['account_id'];
   }
   else {
