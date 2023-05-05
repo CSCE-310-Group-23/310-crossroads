@@ -1,0 +1,16 @@
+.review body {
+	background-color: brown;
+	text-align: center;
+}
+
+.review legend {
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+	color: #028A0f;
+	font-size: 24px;
+} 
+
+.review form {
+	font-family: fantasy;
+	font-size: 16px;
+}

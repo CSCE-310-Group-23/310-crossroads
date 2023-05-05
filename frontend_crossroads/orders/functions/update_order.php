@@ -1,0 +1,28 @@
+<?php 
+	// connect
+	$user = 'root';
+	$password = '';
+	$database = 'crossroads';
+	$servername='localhost:3306';
+	$conn = new mysqli($servername, $user, $password, $database);
+	// Check connection
+	if ($conn->connect_error) {
+		die('Connect Error (' .
+		$conn->connect_errno . ') '.
+		$conn->connect_error);
+	}
+	// handle session
+	session_start();
+
+	$orderID = $_POST['id'];
+	if($_SESSION['is_admin'])
+		$buyerID = $_POST["buyerID"];
+	else
+		$buyerID = $_SESSION['account_id'];
+	$deliveryDate = $_POST['deliveryDate'];
+	$addressID = $_POST['addressID'];
+	$sql = "UPDATE orders SET account_id='$buyerID', delivery_date='$deliveryDate', address_id='$addressID' WHERE order_id=$orderID";
+	$result = $conn->query($sql);
+	$conn->close();
+	header("location: http://localhost/crossroads/orders/scheduling.php?id=-1");
+?>

@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 //Connect to DB
 $connection = mysqli_connect("localhost", "root", "", "crossroads");
 
@@ -26,31 +25,12 @@ if (isset($_POST['login_user'])) {
     }
     else{
         $query = "SELECT * FROM account WHERE account_email='$account_email' AND account_password='$password'";
-<<<<<<< HEAD
-=======
-
->>>>>>> scheduling
         $results = mysqli_query($connection, $query);
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['account_email'] = $account_email;
           $_SESSION['success'] = "You are now logged in";
-<<<<<<< HEAD
           header('location: home.php');
         }else {
-=======
-          // added by Ryan to track session variable for user info
-          $row = mysqli_fetch_array($results);
-
-          $_SESSION['account_id'] = $row['account_id'];
-          $_SESSION['account_password'] = $row['account_password'];
-          $_SESSION['account_fname'] = $row['account_fname'];
-          $_SESSION['account_lname'] = $row['account_lname'];
-          $_SESSION['account_type'] = $row['account_type'];
-          header('location: home.php');
-          // end ryan
-        } 
-        else {
->>>>>>> scheduling
             $_SESSION['message'] = "Your password or email is incorrect";
             echo $_SESSION['message'];
             unset($_SESSION['message']);
@@ -66,7 +46,7 @@ if (isset($_POST['login_user'])) {
 </head>
 <body>
   <div class="header">
-  	<h1>Login</h1>
+  	<h2>Login</h2>
   </div>
 	
   <form method="post" action="login.php">
