@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>inserting PHP code into html</title>
+    <title>Catherine</title>
+    <link rel="stylesheet" href="../../home_style.css">
 </head>
 <body>
 <h2>Hello, this is your customers' page for items</h2>
