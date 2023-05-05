@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 08:26 AM
+-- Generation Time: May 05, 2023 at 11:42 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -27,9 +27,6 @@ USE `crossroads`;
 
 --
 -- Table structure for table `account`
---
--- Creation: May 05, 2023 at 05:34 AM
--- Last update: May 05, 2023 at 05:59 AM
 --
 
 CREATE TABLE `account` (
@@ -56,9 +53,6 @@ INSERT INTO `account` (`account_id`, `account_fname`, `account_lname`, `account_
 --
 -- Table structure for table `address`
 --
--- Creation: May 04, 2023 at 08:38 PM
--- Last update: May 04, 2023 at 10:26 PM
---
 
 CREATE TABLE `address` (
   `address_id` int(12) NOT NULL,
@@ -82,9 +76,6 @@ INSERT INTO `address` (`address_id`, `addr_street_name`, `addr_unit_num`, `addr_
 --
 -- Table structure for table `address_label`
 --
--- Creation: May 04, 2023 at 08:57 PM
--- Last update: May 04, 2023 at 10:27 PM
---
 
 CREATE TABLE `address_label` (
   `address_id` int(12) NOT NULL,
@@ -104,9 +95,6 @@ INSERT INTO `address_label` (`address_id`, `account_id`, `address_title`) VALUES
 --
 -- Table structure for table `item`
 --
--- Creation: May 04, 2023 at 08:54 PM
--- Last update: May 04, 2023 at 10:23 PM
---
 
 CREATE TABLE `item` (
   `item_id` int(12) NOT NULL,
@@ -121,29 +109,26 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_title`, `item_price`, `item_desc`, `account_id`) VALUES
-(1, 'SuperWorks Scissors', 12, 'A pair of scissors intended for cutting through paper and other thin sheets.', 3);
+(1, 'SuperWorks Scissors', 2, 'A pair of scissors intended for cutting through paper and other thin sheets.', 3),
+(2, 'test item 2', 45, 'fake item for testing', 3);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `item_list`
 --
--- Creation: May 04, 2023 at 09:18 PM
---
 
 CREATE TABLE `item_list` (
   `order_id` int(12) NOT NULL,
   `item_id` int(12) NOT NULL,
   `item_quantity` int(12) NOT NULL,
-  `list_price` decimal(10,0) NOT NULL
+  `list_price` int(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `orders`
---
--- Creation: May 04, 2023 at 08:48 PM
 --
 
 CREATE TABLE `orders` (
@@ -164,8 +149,6 @@ INSERT INTO `orders` (`order_id`, `account_id`, `delivery_date`, `address_id`) V
 
 --
 -- Table structure for table `reviews`
---
--- Creation: May 04, 2023 at 09:23 PM
 --
 
 CREATE TABLE `reviews` (
