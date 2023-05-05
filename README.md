@@ -5,4 +5,4 @@ I. Setting up frontend
   1. Copy "frontend_crossroads" folder into C:\xampp\htdocs\
 
 II. Setting up backend
-  1. Copy "backend_crossroads" folder into C:\xampp\mysql\data\{database-name}
+  1. Import "crossroads.sql" on base screen of phpMyAdmin
