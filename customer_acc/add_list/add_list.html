@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Catherine</title>
+    <link rel="stylesheet" href="../../home_style.css">
+</head>
+
+<body>
+
+<nav class="nav-bar">
+    <a href="../../home.html">Go Home</a>
+    <a href="../../customer_acc/item_list_search/item_search.html">Search for Items</a>
+    <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="../item_list_insertion/item_list.html">Insert an Item</a>
+    <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="item_desc.html">Edit Item Description</a>
+    <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="../item_existed_items/item_view.html">Find Your Items</a>
+    <a style="background-color: deepskyblue;" onmouseover="this.style.backgroundColor='gray'; this.style.color='deepskyblue'" onmouseout="this.style.backgroundColor='deepskyblue'; this.style.color='white'" href="../item_delete/item_delete.html">Delete an Item</a>
+    <a href="">Manage Account</a>
+    <a href="../../reviews/reviews.html">Reviews</a>
+</nav>
+
+
+
+<fieldset>
+<legend>Add List Order</legend>
+<form name="frmContact" method="post" action="add_list.php">
+    <p>
+    <label for="Order id">Order ID </label>
+    <input type="text" name="txtOrder" id="txtOrder">
+    </p>
+    <p>
+    <label for="Item ID">Item ID</label>
+    <input type="text" name="txtItem" id="txtItem">
+    </p>
+    <p>
+    <label for="Item Price">Item Price</label>
+    <input type="text" name="txtItemPrice" id="txtItemPrice">
+    </p>
+    <p>
+        <label for="Item Quantity">Item Quantity</label>
+        <input type="text" name="txtItemQuantity" id="txtItemQuantity">
+    </p>
+<!--    <p>-->
+<!--    <label for="Item New Price">Item New Price</label>-->
+<!--    <input name="text" id="txtItemPrice">-->
+<!--    </p>-->
+    <p>&nbsp;</p>
+    <p>
+    <input type="submit" name="Submit" id="Submit" value="Submit">
+    </p>
+</form>
+</fieldset>
+</body>
+</html>
+
