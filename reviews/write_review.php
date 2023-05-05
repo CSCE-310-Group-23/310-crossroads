@@ -17,7 +17,7 @@ echo "<input type='hidden' name='write_item_id' value='$write_item_id'>";
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
-echo "<table border='1'>
+echo "<table border='1' style='font-size: 24px'>
     <tr>
         <th>review_ID</th>
         <th>review_text</th>
@@ -25,7 +25,7 @@ echo "<table border='1'>
         <th>item_id</th>
     </tr>";
 
-$result = mysqli_query($con,"SELECT * FROM reviews WHERE item_id = $write_item_id");
+$result = mysqli_query($con,"SELECT * FROM reviews");
 
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";

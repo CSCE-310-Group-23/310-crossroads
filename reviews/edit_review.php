@@ -12,7 +12,7 @@ echo "<input type='hidden' name='edit_review_id' value='$edit_review_id'>";
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
-echo "<table border='1'>
+echo "<table border='1' style='font-size: 24px'>
     <tr>
         <th>review_ID</th>
         <th>review_text</th>

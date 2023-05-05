@@ -5,16 +5,36 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <title>Yvan's Reviews Section</title>
-
 </head>
 
 
 
 <body style="background-color: beige; text-align: center">
 
+<!--Find all of your reviews-->
+<fieldset>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">See all of your reviews</legend>
+    <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="search_account.php">
+        <p>
+        <h3>Search for all of your reviews</h3>
+        <label for="SEARCH_ACCOUNT_ID">Account ID: </label>
+        <input type="int" name="search_account_id" id="search_account_id">
+        </p>
+
+        <div></div>
+
+        <p>
+            <input style="color: red; font-family: fantasy; font-size: 16px" type="submit" name="Submit" value="Submit">
+        </p>
+    </form>
+
+
+</fieldset>
+
+
 <!--Search for reviews of a certain item.-->
 <fieldset>
-    <legend style="color: red; font-family: fantasy; font-size: 24px">Search for a Review</legend>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Search for a review</legend>
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="search_review.php">
         <p>
             <h3>Search for reviews of a certain item!</h3>
@@ -34,7 +54,7 @@
 
 <!--Write a review for an item.-->
 <fieldset>
-    <legend style="color: red; font-family: fantasy; font-size: 24px">Write a Review</legend>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Write a review</legend>
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="write_review.php">
         <p>
             <h3>Write a review for a certain item!</h3>
@@ -54,7 +74,7 @@
 
 <!--Edit a review of your choice-->
 <fieldset>
-    <legend style="color: red; font-family: fantasy; font-size: 24px">Edit a Review</legend>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Edit a review</legend>
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="edit_review.php">
         <p>
             <h3>Edit your reviews!</h3>
@@ -71,7 +91,7 @@
 
 <!--Delete a review of your choice-->
 <fieldset>
-    <legend style="color: red; font-family: fantasy; font-size: 24px">Delete a Review</legend>
+    <legend style="color: red; font-family: fantasy; font-size: 24px">Delete a review</legend>
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="remove_review.php">
         <p>
         <h3>Delete your reviews!</h3>

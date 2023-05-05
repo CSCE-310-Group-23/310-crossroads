@@ -1,16 +1,16 @@
 <?php
 $con = mysqli_connect('localhost', 'root', '', 'crossroadsgroup23');
 
-$search_item_id = $_POST['search_item_id'];
+$search_account_id = $_POST['search_account_id'];
 
-$result = mysqli_query($con,"SELECT * FROM reviews WHERE item_id = $search_item_id");
+$result = mysqli_query($con,"SELECT * FROM reviews WHERE account_ID = $search_account_id");
 
 echo "<form action='reviews.html' method='post'>";
-echo "<input type='hidden' name='search_item_id' value='$search_item_id'>";
+echo "<input type='hidden' name='search_account_id' value='$search_account_id'>";
 echo "<input type='submit' value='Return'>";
 echo "</form>";
 
-echo "<table border='1' style='font-size: 24px'>
+echo "<table border='1'>
     <tr>
         <th>review_ID</th>
         <th>review_text</th>
