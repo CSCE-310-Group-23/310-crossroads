@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect('localhost', 'root', '','CS_310_final_project');
+$con=mysqli_connect('localhost', 'root', '','crossroads');
 // Check connection
 if (mysqli_connect_errno())
 {
