@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 01:37 PM
+-- Generation Time: May 05, 2023 at 04:23 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,11 +31,11 @@ USE `crossroads`;
 
 CREATE TABLE `account` (
   `account_id` int(12) NOT NULL COMMENT 'Account ID',
-  `account_fname` varchar(100) NOT NULL,
-  `account_lname` varchar(100) NOT NULL,
-  `account_email` varchar(100) NOT NULL,
-  `account_password` varchar(255) NOT NULL,
-  `account_type` int(1) NOT NULL
+  `account_fname` varchar(100) NOT NULL COMMENT 'First Name',
+  `account_lname` varchar(100) NOT NULL COMMENT 'Last Name',
+  `account_email` varchar(100) NOT NULL COMMENT 'eMail Address',
+  `account_password` varchar(255) NOT NULL COMMENT 'Password',
+  `account_type` int(1) NOT NULL COMMENT '0 = admin, 1 = seller, 2 = buyer'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -44,8 +44,8 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `account_fname`, `account_lname`, `account_email`, `account_password`, `account_type`) VALUES
 (1, 'Robbie', 'Root', 'rr@me.com', 'rr', 0),
-(2, 'Bobby', 'Buyer', 'bb@me.com', 'bb', 1),
-(3, 'Selena', 'Seller', 'ss@me.com', 'ss', 2),
+(2, 'Bobby', 'Buyer', 'bb@me.com', 'bb', 2),
+(3, 'Selena', 'Seller', 'ss@me.com', 'ss', 1),
 (4, 'Ryan', 'Kafka', 'rkafka@tamu.edu', 'rjk', 0);
 
 -- --------------------------------------------------------
@@ -167,11 +167,18 @@ INSERT INTO `orders` (`order_id`, `account_id`, `delivery_date`, `address_id`) V
 (1, 3, '2023-05-10', 1),
 (2, 2, '2023-05-22', 2),
 (3, 4, '2023-05-18', 4),
-(4, 4, '2023-05-09', 5),
-(5, 2, '2023-05-30', 2),
-(6, 2, '2023-06-01', 6),
+(4, 4, '2023-05-09', 4),
+(6, 4, '2023-06-01', 5),
 (7, 2, '2023-08-09', 7),
-(23, 2, '2023-05-30', 6);
+(23, 4, '2023-05-30', 4),
+(24, 2, '2025-06-14', 6),
+(27, 4, '2023-05-25', 5),
+(28, 2, '2023-05-30', 7),
+(29, 2, '2023-05-30', 4),
+(30, 2, '2023-05-30', 2),
+(31, 2, '2023-05-30', 2),
+(32, 2, '2023-05-30', 7),
+(33, 2, '2023-05-30', 2);
 
 -- --------------------------------------------------------
 
@@ -204,8 +211,7 @@ ALTER TABLE `account`
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`address_id`),
-  ADD UNIQUE KEY `address_id` (`address_id`);
+  ADD PRIMARY KEY (`address_id`);
 
 --
 -- Indexes for table `address_label`
@@ -232,9 +238,7 @@ ALTER TABLE `item_list`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `FK_OrderBuyer` (`account_id`),
-  ADD KEY `FK_OrderDeliveryAddress` (`address_id`);
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `reviews`
@@ -253,7 +257,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Constraints for dumped tables
@@ -278,13 +282,6 @@ ALTER TABLE `item`
 ALTER TABLE `item_list`
   ADD CONSTRAINT `FK_ItemBeingPurchased` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`),
   ADD CONSTRAINT `FK_OrderOfItem` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `FK_OrderBuyer` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
-  ADD CONSTRAINT `FK_OrderDeliveryAddress` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`);
 
 --
 -- Constraints for table `reviews`
