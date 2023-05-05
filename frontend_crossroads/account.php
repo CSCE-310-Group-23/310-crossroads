@@ -12,26 +12,26 @@ if (!$connection) {
 //Query Account details
 $query = "SELECT account_fname, account_lname, account_email FROM account";
 $result = mysqli_query($connection, $query);
-if (isset($_POST['chg_fname'])) {
-  $account_fname = mysqli_real_escape_string($connection, $_POST['account_fname']);
-  $query = "UPDATE account SET account_fname='$account_fname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+if (isset($_POST['chg_email'])) {
+  $account_email = mysqli_real_escape_string($connection, $_POST['account_email']);
+  $query = "UPDATE account SET account_email='$account_email' WHERE account_email='" . $_SESSION['account_email'] . "'";
   $result = mysqli_query($connection, $query);
 }
 if (isset($_POST['chg_lname'])) {
   $account_lname = mysqli_real_escape_string($connection, $_POST['account_lname']);
-  $query = "UPDATE account SET account_lname='$account_lname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+  $query = "UPDATE account SET account_lname='$account_lname' WHERE account_lname='" . $_SESSION['account_lname'] . "'";
   $result = mysqli_query($connection, $query);
 }
 
-if (isset($_POST['chg_email'])) {
-  $account_email = mysqli_real_escape_string($connection, $_POST['account_email']);
-  $query = "UPDATE account SET account_email='$account_fname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+if (isset($_POST['chg_fname'])) {
+  $account_fname = mysqli_real_escape_string($connection, $_POST['account_fname']);
+  $query = "UPDATE account SET account_fname='$account_fname' WHERE account_fname='" . $_SESSION['account_fname'] . "'";
   $result = mysqli_query($connection, $query);
 }
 
 if (isset($_POST['chg_password'])) {
   $account_password = mysqli_real_escape_string($connection, $_POST['account_password']);
-  $query = "UPDATE account SET account_password='$account_fname' WHERE account_email='" . $_SESSION['account_email'] . "'";
+  $query = "UPDATE account SET account_password='$account_fname' WHERE account_paaword='" . $_SESSION['account_password'] . "'";
   $result = mysqli_query($connection, $query);
 }
 
