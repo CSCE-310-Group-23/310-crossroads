@@ -6,7 +6,7 @@
 </head>
 <body>
 <nav class="nav-bar">
-    <a href="http://localhost/CSCE310/310-crossroads/customer_acc/cust_home_page/cust_home_page.php">Go Home</a>
+    <a href="http://localhost/CSCE310/310-crossroads/home.html">Go Home</a>
     <a href="http://localhost/CSCE310/310-crossroads/admin_acc/home_page/home_page_main.php">Go To Admin Page</a>
     <a href="http://localhost/CSCE310/310-crossroads/customer_acc/cust_home_page/cust_home_page.php">Go To Customers' Selection</a>
     <a href="">Manage Account</a>
