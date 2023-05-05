@@ -2,7 +2,7 @@
 *Added by Ryan Kafka, please contact if more information is necessary.*
 
 I have used the database export feature to create a script that can be used to create the crossroads database. <br>
-The script is within this directory under the name "crossroads.sql" <br>
+This script is within this directory under the name: "crossroads.sql" <br>
 <ol>
   <li>Download this "crossroads.sql" file to your local machine.</li>
   <li>Drop existing crossroads database : do one of the following
