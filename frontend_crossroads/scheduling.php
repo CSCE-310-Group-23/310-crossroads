@@ -72,7 +72,7 @@
 			<section>
 			<br>
 			<footer>
-				<p>Author: Ryan Kafka [<a href="mailto:rkafka@tamu.edu">rkafka@tamu.edu</a>]</p>
+				<p>Contributed by Ryan Kafka [<a href="mailto:rkafka@tamu.edu">rkafka@tamu.edu</a>]</p>
 			</footer>
 		</section>
 	</body>

@@ -6,7 +6,7 @@ if (mysqli_connect_errno())
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 $txtOrder = $_POST['txtOrder'];
-$result = mysqli_query($con,"SELECT * FROM item_list WHERE order_id = $txtOrder");
+$result = mysqli_query($con,"SELECT * FROM item_list WHERE order_id=$txtOrder");
 $bg_color = '#ff0000';
 echo "<table border='1'>
 	<tr>
