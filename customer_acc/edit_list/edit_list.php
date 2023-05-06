@@ -18,14 +18,14 @@ $con = mysqli_connect('localhost', 'root', '','crossroads');
 
 $txtItem = $_POST['txtItem'];
 $txtOrder = $_POST['txtOrder'];
-$txtItemPrice = mysqli_query($con,"select item_price from item where item_id='$txtItem'");
+$txtItemPrice = mysqli_query($con,"SELECT item_price from item where item_id='$txtItem'");
 $txtItemQuantity = $_POST['txtItemQuantity'];
 $txtlistprice = (int)$txtItemPrice * (int)$txtItemQuantity;
 //$txtItemPrice= $_POST['txtItemPrice'];
 
 // database insert SQL code
 $sql = "UPDATE item_list SET item_id = '$txtItem', item_quantity='$txtItemQuantity', list_price = '$txtlistprice'
-        WHERE order_id = '$txtItem'";
+        WHERE order_id = '$txtOrder' and item_id = '$txtItem'";
 $rs = mysqli_query($con,$sql);
 
 $result = mysqli_query($con,"SELECT * FROM item_list");
