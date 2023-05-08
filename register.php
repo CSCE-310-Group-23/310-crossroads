@@ -32,14 +32,24 @@ if (isset($_POST['reg_user'])) {
         unset($_SESSION['message']);
       }
     else {
-    $query = "INSERT INTO account (account_fname, account_lname, account_email, account_password) 
-            VALUES('$account_fname', '$account_lname', '$account_email', '$password_1')";
-    mysqli_query($connection, $query);
-    $_SESSION['account_email'] = $account_email;
-    $_SESSION['success'] = "You are now logged in";
-    header('location: home.php');
-    echo $_SESSION['success'];
-    unset($_SESSION['success']);
+      $max_id_query = mysqli_query($connection, "SELECT max(account_id) FROM account");
+      $max_id = mysqli_fetch_array($max_id_query)[0];
+      $max_id++;
+      $query = "INSERT INTO account (account_id, account_fname, account_lname, account_email, account_password,account_type) 
+              VALUES('$max_id', '$account_fname', '$account_lname', '$account_email', '$password_1','2')";
+      mysqli_query($connection, $query);
+      $_SESSION['account_email'] = $account_email;
+      $_SESSION['success'] = "You are now logged in";
+      // added by Ryan to track session variable for user info
+      $_SESSION['account_id'] = $max_id;
+      $_SESSION['account_password'] = $password_1;
+      $_SESSION['account_fname'] = $account_fname;
+      $_SESSION['account_lname'] = $account_lname;
+      $_SESSION['account_type'] = 2;
+      // end ryan
+      header('location: home.php');
+      echo $_SESSION['success'];
+      unset($_SESSION['success']);
     }
 }
 ?>

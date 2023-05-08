@@ -6,16 +6,16 @@
 </head>
 <body>
 <nav class="nav-bar">
-    <a href="http://localhost/CSCE310/310-crossroads/home.html">Go Home</a>
-    <a href="http://localhost/CSCE310/310-crossroads/admin_acc/home_page/home_page_main.php">Go To Admin Page</a>
-    <a href="http://localhost/CSCE310/310-crossroads/customer_acc/cust_home_page/cust_home_page.php">Go To Customers' Selection</a>
+    <a href="http://localhost/310-crossroads-main/home.php">Go Home</a>
+    <a href="http://localhost/310-crossroads-main/admin_acc/home_page/home_page_main.php">Go To Admin Page</a>
+    <a href="http://localhost/310-crossroads-main/customer_acc/cust_home_page/cust_home_page.php">Go To Customers' Selection</a>
     <a href="">Manage Account</a>
 </nav>
 <?php
 // database connection code
 // $con = mysqli_connect('localhost', 'database_user', 'database_password','database');
 
-$con = mysqli_connect('localhost', 'root', '','crossroads');
+$con = mysqli_connect('localhost', 'root', '','cs_310_final_project');
 
 // get the post records
 
@@ -45,7 +45,7 @@ echo "<table border='1' style='font-size: 24px'>
 <th>item_title</th>
 <th>item_price</th>
 <th>item_desc</th>
-<th>account_ID</th>
+<th>account_id</th>
 </tr>";
 
 while($row = mysqli_fetch_array($result))
@@ -55,7 +55,7 @@ echo "<td>" . $row['item_id'] . "</td>";
 echo "<td>" . $row['item_title'] . "</td>";
 echo "<td>" . $row['item_price'] . "</td>";
 echo "<td>" . $row['item_desc'] . "</td>";
-echo "<td>" . $row['account_ID'] . "</td>";
+echo "<td>" . $row['account_id'] . "</td>";
 echo "</tr>";
 }
 echo "</table>";

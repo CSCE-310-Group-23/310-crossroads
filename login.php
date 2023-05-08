@@ -1,5 +1,8 @@
 <?php
+//include 'home.html';
+
 session_start();
+
 //Connect to DB
 $connection = mysqli_connect("localhost", "root", "", "CS_310_final_project");
 
@@ -25,12 +28,23 @@ if (isset($_POST['login_user'])) {
     }
     else{
         $query = "SELECT * FROM account WHERE account_email='$account_email' AND account_password='$password'";
+
         $results = mysqli_query($connection, $query);
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['account_email'] = $account_email;
             $_SESSION['success'] = "You are now logged in";
+          // added by Ryan to track session variable for user info
+          $row = mysqli_fetch_array($results);
+
+          $_SESSION['account_id'] = $row['account_id'];
+          $_SESSION['account_password'] = $row['account_password'];
+          $_SESSION['account_fname'] = $row['account_fname'];
+          $_SESSION['account_lname'] = $row['account_lname'];
+          $_SESSION['account_type'] = $row['account_type'];
             header('location: home.php');
-        }else {
+          // end ryan
+        }
+        else {
             $_SESSION['message'] = "Your password or email is incorrect";
             echo $_SESSION['message'];
             unset($_SESSION['message']);
@@ -61,7 +75,8 @@ if (isset($_POST['login_user'])) {
     <div class="input-group">
         <button type="submit" class="btn" name="login_user">Login</button>
     </div>
-    <a href="../home.html">return home</a>
+    <a href="register.php">Register as new User</a><br>
+    <a href="home.php">return home</a>
 </form>
 </body>
 </html>

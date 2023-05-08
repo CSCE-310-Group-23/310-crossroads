@@ -1,0 +1,147 @@
+Steps to Install
+1) copy 310-crossroads-main directory (Root of main branch) to htdocs to create htdocs\310-crossroads-main
+2) create a database named  cs_310_final_project
+3) Go to Import and select c:\xampp\htdocs\310-crossroads-main\backend_crossroads\cs_310_final_project.sql
+4) Launch browser & navigate to http://localhost/310-crossroads-main
+
+
+
+Problems:
+1) Need everyone on the same database.  Pick one merger code to that DB
+	crossroads
+	CS_310_final_project
+2) Need everone to use relative pathing or the same absolute path
+	http://localhost/CS_310_DEMO/admin_acc/
+	http://localhost/crossroads/orders
+
+
+Changes needed to integrate properly:
+1) Moved to Standard DBName - CS_310_final_project   (could have used either, modified the crossroads.sql since they did not provide one)
+		crossroads, crossroadsgroup23, cs_310_final_project
+	a) updated crossroads.sql to cs_310_final_project.sql and replace the dbname
+	b) search and replace all connection strings to use cs_310_final_project across all code modules
+2) They used the wrong starting location for the frontend code.  
+	a) Moved code in frontend_crossroads which should have been the home of the front_end to the root which was used as home of front_end
+	b) search an replace frontend_crossroads where they added it, to eliminate it.
+	c) 
+3) People hardcoded differnt assumed home directories for the frontend
+	a) search and replace http://localhost/CSCE310/310-crossroads ==> http://localhost/310-crossroads-main
+	b) search and replace http://localhost/crossroads ==> http://localhost/310-crossroads-main
+4) mismatched home pages:  home.php includes home2.html while main home is really home.html
+	a) changed home.php to include home.html not home2.html
+	b) changed home.html to use absolute addressing to avoid all the differnt assumptions about directory structure
+	c) changed home.html to go to home.php so the delete account function is available after the first time
+	d) fixed account.php to include home.html instead of home2.html
+	e) fixed login.php to include home.html 
+	d) delete.php,login.php returns to http://localhost/310-crossroads-main/home.php instead of ../home.html
+5) account management assumes frontend_crossroads directory, fixed to run without frontend_crossroads
+6) The login.php they used is outdated switch to login.php in frontend_crossroads
+7) review code table structure had only 1 account_id not account_ID-buyer and account_ID_seller  and only review_text not review_title and review_body.  changed table structure to match code.
+    	From:
+	  CREATE TABLE `reviews` (
+		`review_id` int(12) NOT NULL,
+		`account_id_seller` int(12) NOT NULL,
+		`account_id_buyer` int(12) NOT NULL,
+		`item_id` int(11) NOT NULL,
+		`review_score` int(2) NOT NULL,
+		`review_title` varchar(255) NOT NULL,
+		`review_text` varchar(255) NOT NULL	
+	  )
+	To:
+	  CREATE TABLE `reviews` (
+		`review_id` int(12) NOT NULL,
+		`account_id` int(12) NOT NULL,
+		`item_id` int(11) NOT NULL,
+		`review_score` int(2) NOT NULL,
+		`review_title` varchar(255) NOT NULL,
+		`review_text` varchar(255) NOT NULL
+	  )
+	and:
+	  
+	  
+
+8) review section code pages used account_ID and review_ID instead of account_id and review_id.  Search and replace account_ID to account_id.
+9) Their modification to database creation SQL has failed alter table commands:
+ALTER TABLE `item_list`
+  ADD CONSTRAINT `FK_ItemBeingPurchased` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`),
+  ADD CONSTRAINT `FK_OrderOfItem` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
+#1452 - Cannot add or update a child row: a foreign key constraint fails (`cs_310_final_project`.`#sql-b1ac_c2`, CONSTRAINT `FK_OrderOfItem` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`))
+
+Fixed by adding an order to orders with order_id = 5
+10) Changed access_orders to test for existance of id passed in on URL to eliminate error messages when not passed.
+    //    if($row['order_id'] == $_GET['id']) {
+    if (isset($_GET['id']) && $row['order_id'] == $_GET['id']) {
+11) When you delete an order, you have to delete the item_list for that order .  they added a constraint that suddenly enforced that.
+	a) Added:	$sql = "DELETE FROM item_list WHERE order_id=$id";
+			$conn->query($sql);
+	   before:
+			$sql = "DELETE FROM orders WHERE order_id=$id";
+			$conn->query($sql);
+12) No link to register.php :  Added following to login.php before "return home"
+	    <a href="register.php">Register as new User</a><br>
+13) Register new user register user with account_ID of zero. It also registers it with an account_type of zero which anly allows admins to register. This vido shows account type being set to null, so this is not an integration issue.
+	Coiuld fix by making account.account_id auto_incrementing or copying the method catherine used to get max and add 1 (race condition possible there though I believe if there were muliplt servers running)
+      and and 2nd part by adding account_type to the insert statement
+	* Did above as temp fix to avoid invalidaing db
+	      $max_id_query = mysqli_query($connection, "SELECT max(account_id) FROM account");
+      	$max_id = mysqli_fetch_array($max_id_query)[0];
+	      $max_id++;
+      	$query = "INSERT INTO account (account_id, account_fname, account_lname, account_email, account_password,account_type) 
+            	    VALUES('$max_id', '$account_fname', '$account_lname', '$account_email', '$password_1','2')";
+      mysqli_query($connection, $query);
+
+14) register.php was missing extra session variables added to login.php
+15) delete.php was missing quotes around $id in the sql
+		$sql = "DELETE FROM account WHERE account_id = '$id';";
+16) Integration deleted the logout link in the main navigation si it was reentered.
+
+
+Look into:  
+1) {root}/navbar.html is included from many places, but uses relative addresses.  need to fix to be based on root of wherever the code is installed.   You should be able to move/rename the root without breaking the code.
+2) You are missing 2 foreign key constraints on orders vs account and address tables.  You should not be able to delete an account if there are orders for that account.  
+	a) Should not be able to add an order for a non-existant account.  Your UI needs to gracefully handle when the order is not allowed to be created  (ie give list of accounts in dropdown)
+		ALTER TABLE `orders` ADD CONSTRAINT `FK_orders_account` FOREIGN KEY (`account_id`) REFERENCES `account`(`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
+	b) Should not be able to add an order for a non-existant address.  Your UI needs to gracefully handle when the order is not allowed to be created  (ie give list of addresses in dropdown)
+		ALTER TABLE `orders` ADD CONSTRAINT `FK_orders_address` FOREIGN KEY (`address_id`) REFERENCES `address`(`address_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+	c) Should not be able to add an order for a non-existant address.  Your UI needs to gracefully handle when the order is not allowed to be created  (ie give list of addresses in dropdown)
+		ALTER TABLE `orders` ADD CONSTRAINT `FK_orders_address` FOREIGN KEY (`address_id`) REFERENCES `address`(`address_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+	d) Handle this gracefully by replacing int input with dropdown list populated with allowed values
+       	in add_order.php , Replace 
+			<label for="buyerID" <?php if(!$_SESSION['is_admin']) {echo " style='display: none'";}?>>Buyer's Account ID:</label>
+			<input type="number" name="buyerID" <?php if(!$_SESSION['is_admin']) {echo " style='display: none'";}?>>
+		with
+			<label for="buyerID"<?php if (!$_SESSION['is_admin']) echo " style='display:none;'"; ?>>Buyer's Account ID:</label>
+			<?php
+			if ($_SESSION['is_admin']) {
+				echo '<select name="buyerID">';
+				$query = "SELECT account_id FROM account";
+				$result = mysqli_query($conn, $query);
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo '<option value="' . $row['account_id'] . '">' . $row['account_id'] . '</option>';
+				}
+				echo '</select>';
+			} else {
+				echo '<input type="number" name="buyerID" style="display:none;">';
+			}
+			?>
+	e) 	in add_order.php , Replace 
+				<input type="number" name="addressID">
+		with
+			<label for="buyerID"<?php if (!$_SESSION['is_admin']) echo " style='display:none;'"; ?>>Buyer's Account ID:</label>
+			<?php
+			if ($_SESSION['is_admin']) {
+				echo '<select name="buyerID">';
+				$query = "SELECT account_id FROM account";
+				$result = mysqli_query($conn, $query);
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo '<option value="' . $row['account_id'] . '">' . $row['account_id'] . '</option>';
+				}
+				echo '</select>';
+			} else {
+				echo '<input type="number" name="buyerID" style="display:none;">';
+			}
+			?>
+
+
+
+

@@ -1,4 +1,5 @@
 <?php
+include "home.html";
 session_start();
 //Connect to DB
 $connection = mysqli_connect("localhost", "root", "", "CS_310_final_project");
@@ -10,7 +11,7 @@ if (!$connection) {
 
 
 $id = $_POST['id'];
-$sql = "DELETE FROM account WHERE account_ID = $id;";
+$sql = "DELETE FROM account WHERE account_id = $id;";
 mysqli_query($connection, $sql);
 
 
@@ -22,12 +23,12 @@ mysqli_query($connection, $sql);
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="../home_style.css">
+    <link rel="stylesheet" href="home_style.css">
 </head>
 <body>
 
     <p>sorry to see you go, your account has been deleted.</p>
 
-<a href="../home.html">go home</a>
+<a href="home.php">go home</a>
 </body>
 </html>

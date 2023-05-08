@@ -1,3 +1,8 @@
+/* 
+	@AUTHOR  Ryan Kafka
+	stylesheet for orders/scheduling section
+*/
+
 :root {
 	--emeraldgreen: #028A0f;
 }
@@ -29,9 +34,10 @@ nav a {
 	transform: translateY(35%);	
 }
 
-/* nav a:hover {
-	background-color: var(--emeraldgreen);
-} */
+.nav-bar a:hover {
+    background-color: #028A0f;
+    color: white;
+}
 
 /* basics (table + header) styling */ 
 
@@ -74,3 +80,9 @@ footer {
 form {
 	font-family: Verdana, Geneva, sans-serif;
 }
+
+/* legend {
+	text-align: center;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #028A0f;
+} */

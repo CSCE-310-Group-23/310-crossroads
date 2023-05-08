@@ -13,7 +13,7 @@
 <body style="background-color: beige; text-align: center">
 
 <nav class="nav-bar">
-    <a href="../home.html">Go Home</a>
+    <a href="../home.php">Go Home</a>
     <a href="../customer_acc/item_list_search/item_search.html">Search for Items</a>
     <a href="">Manage Account</a>
     <a href="reviews.html">Reviews</a>
@@ -25,7 +25,7 @@
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="search_account.php">
         <p>
         <h3>Search for all of your reviews</h3>
-        <label for="SEARCH_ACCOUNT_ID">Account ID: </label>
+        <label for="SEARCH_ACCOUNT_id">Account ID: </label>
         <input type="int" name="search_account_id" id="search_account_id">
         </p>
 
@@ -46,7 +46,7 @@
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="search_review.php">
         <p>
             <h3>Search for reviews of a certain item!</h3>
-            <label for="SEARCH_ITEM_ID">Item ID: </label>
+            <label for="SEARCH_ITEM_id">Item ID: </label>
             <input type="int" name="search_item_id" id="search_item_id">
         </p>
 
@@ -66,10 +66,10 @@
     <form style="font-family: fantasy; font-size: 16px" name="review-page" method="post" action="write_review.php">
         <p>
             <h3>Write a review for a certain item!</h3>
-            <label for="WRITE_ITEM_ID">Item ID: </label>
+            <label for="WRITE_ITEM_id">Item ID: </label>
             <input type="int" name="write_item_id" id="write_item_id">
             <div></div>
-            <label type="WRITE_ACCOUNT_ID">Account ID: </label>
+            <label type="WRITE_ACCOUNT_id">Account ID: </label>
             <input type="int" name="write_account_id" id="write_account_id">
             <div></div>
             <label type="WRITE_REVIEW" maxlength="280" size="70">Write your review: </label>

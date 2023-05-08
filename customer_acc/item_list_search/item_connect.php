@@ -4,13 +4,13 @@
 </head>
 <body>
 <nav class="nav-bar">
-    <a href="http://localhost/CSCE310/310-crossroads/home.html">Go Home</a>
-    <a href="http://localhost/CSCE310/310-crossroads/admin_acc/home_page/home_page_main.php">Go To Admin Page</a>
-    <a href="http://localhost/CSCE310/310-crossroads/customer_acc/cust_home_page/cust_home_page.php">Go To Customers' Selection</a>
+    <a href="http://localhost/310-crossroads-main/home.php">Go Home</a>
+    <a href="http://localhost/310-crossroads-main/admin_acc/home_page/home_page_main.php">Go To Admin Page</a>
+    <a href="http://localhost/310-crossroads-main/customer_acc/cust_home_page/cust_home_page.php">Go To Customers' Selection</a>
     <a href="">Manage Account</a>
 </nav>
 <?php
-$con=mysqli_connect('localhost', 'root', '','crossroads');
+$con=mysqli_connect('localhost', 'root', '','cs_310_final_project');
 // Check connection
 if (mysqli_connect_errno())
 {

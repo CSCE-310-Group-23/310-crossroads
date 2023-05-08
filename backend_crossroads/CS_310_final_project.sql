@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 05:09 PM
+-- Generation Time: May 07, 2023 at 10:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,10 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crossroads`
+-- Database: `cs_310_final_project`
 --
-CREATE DATABASE IF NOT EXISTS `crossroads` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `crossroads`;
+DROP DATABASE `cs_310_final_project`;
+
+CREATE DATABASE IF NOT EXISTS `cs_310_final_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `cs_310_final_project`;
 
 -- --------------------------------------------------------
 
@@ -37,6 +39,7 @@ CREATE TABLE `account` (
   `account_password` varchar(255) NOT NULL COMMENT 'Password',
   `account_type` int(1) NOT NULL COMMENT '0 = admin, 1 = seller, 2 = buyer'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- RELATIONSHIPS FOR TABLE `account`:
@@ -115,8 +118,8 @@ INSERT INTO `address_label` (`address_id`, `account_id`, `address_title`) VALUES
 (3, 3, 'Summer Stay'),
 (4, 4, 'Family Home'),
 (5, 4, 'UCentre'),
-(6, 2, 'Baller\'s Court'),
-(7, 2, 'Dorm');
+(6, 2, 'Ballers Court'),
+(7, 1, 'Dorm');
 
 -- --------------------------------------------------------
 
@@ -161,6 +164,10 @@ CREATE TABLE `item_list` (
 
 --
 -- RELATIONSHIPS FOR TABLE `item_list`:
+--   `item_id`
+--       `item` -> `item_id`
+--   `order_id`
+--       `orders` -> `order_id`
 --
 
 --
@@ -170,8 +177,7 @@ CREATE TABLE `item_list` (
 INSERT INTO `item_list` (`order_id`, `item_id`, `item_quantity`, `list_price`) VALUES
 (2, 1, 6, 12),
 (3, 1, 2, 4),
-(4, 2, 2, 90),
-(5, 2, 4, 180);
+(4, 2, 2, 90);
 
 -- --------------------------------------------------------
 
@@ -188,6 +194,8 @@ CREATE TABLE `orders` (
 
 --
 -- RELATIONSHIPS FOR TABLE `orders`:
+--   `account_id`
+--       `account` -> `account_id`
 --
 
 --
@@ -199,13 +207,12 @@ INSERT INTO `orders` (`order_id`, `account_id`, `delivery_date`, `address_id`) V
 (2, 2, '2023-05-22', 2),
 (3, 4, '2023-05-18', 4),
 (4, 4, '2023-05-09', 4),
-(6, 4, '2023-06-01', 5),
-(7, 2, '2023-08-09', 7),
+(6, 3, '2023-06-01', 3),
+(7, 2, '2023-08-09', 2),
 (23, 4, '2023-05-30', 4),
 (24, 2, '2025-06-14', 6),
 (27, 4, '2023-05-25', 5),
-(28, 2, '2023-05-30', 7),
-(29, 2, '2023-05-30', 4),
+(28, 2, '2023-05-30', 6),
 (30, 2, '2023-05-30', 2),
 (31, 2, '2023-05-30', 2),
 (32, 2, '2023-05-30', 7),
@@ -219,17 +226,30 @@ INSERT INTO `orders` (`order_id`, `account_id`, `delivery_date`, `address_id`) V
 
 CREATE TABLE `reviews` (
   `review_id` int(12) NOT NULL,
-  `account_id_seller` int(12) NOT NULL,
-  `account_id_buyer` int(12) NOT NULL,
+  `account_id` int(12) NOT NULL,
   `item_id` int(11) NOT NULL,
   `review_score` int(2) NOT NULL,
   `review_title` varchar(255) NOT NULL,
-  `review_body` varchar(255) NOT NULL
+  `review_text` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- RELATIONSHIPS FOR TABLE `reviews`:
+--   `account_id`
+--       `account` -> `account_id`
+--   `item_id`
+--       `item` -> `item_id`
 --
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `account_id`, `item_id`, `review_score`, `review_title`, `review_text`) VALUES
+(1, 2, 1, 0, '', 'check it out'),
+(2, 1, 1, 0, '', ''),
+(3, 2, 2, 0, '', '2'),
+(4, 2, 2, 0, '', 'This review has been deleted by the user.');
 
 --
 -- Indexes for dumped tables
@@ -273,15 +293,16 @@ ALTER TABLE `item_list`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `FK_orders_account` (`account_id`),
+  ADD KEY `FK_orders_address_label` (`address_id`);
 
 --
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`review_id`),
-  ADD KEY `FK_ReviewBuyer` (`account_id_buyer`),
-  ADD KEY `FK_ReviewSeller` (`account_id_seller`),
+  ADD KEY `FK_ReviewBuyer` (`account_id`),
   ADD KEY `FK_ReviewItem` (`item_id`);
 
 --
@@ -292,7 +313,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `order_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables
@@ -310,6 +331,26 @@ ALTER TABLE `address_label`
 --
 ALTER TABLE `item`
   ADD CONSTRAINT `FK_Seller` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
+
+--
+-- Constraints for table `item_list`
+--
+ALTER TABLE `item_list`
+  ADD CONSTRAINT `FK_ItemBeingPurchased` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`),
+  ADD CONSTRAINT `FK_OrderOfItem` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `FK_orders_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `FK_ReviewBuyer` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
+  ADD CONSTRAINT `FK_ReviewItem` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
